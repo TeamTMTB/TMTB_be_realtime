@@ -1,6 +1,11 @@
 
 const redis = require("redis");
-const client = redis.createClient({host : "210.107.78.155", port : 6379});
+const connectInfo = require("../../redis-connect-info.json");
+const client = redis.createClient({
+    host : connectInfo.host, 
+    port : connectInfo.port,
+    password : connectInfo.password
+});
 
 // Redis에서 Room key 얻기
 function getRoomsKeys(){
