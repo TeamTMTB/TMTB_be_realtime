@@ -9,10 +9,12 @@ const socket = require("socket.io");
 const io = socket(server);
 
 const room = require('./controller/roomsController/roomRouter.js');
+const realTimeOpen = require('./controller/real-time/real-timeController.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/rooms', room);
 
+realTimeOpen(io);
 
 server.listen(8000, () => console.log("server is running on port 8000"));
