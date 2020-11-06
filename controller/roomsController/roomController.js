@@ -28,7 +28,7 @@ async function getRoomsInfo(roomsKey){
       });
       // console.log(result);
       roomsInfo.push(result);
-      console.log(roomsInfo);
+    //   console.log(roomsInfo);
     }
   
     return roomsInfo;
@@ -74,7 +74,7 @@ let getRooms = async function(req, res){
     // res.send('서버 get 응답함!');
     let roomsInfo = []
     let roomsKey = await getRoomsKeys();
-    console.log(roomsKey);
+    // console.log(roomsKey);
     roomsInfo = await getRoomsInfo(roomsKey);
     res.send(roomsInfo);
 }
