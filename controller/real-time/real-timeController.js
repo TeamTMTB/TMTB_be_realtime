@@ -53,7 +53,7 @@ let openRealTime = function (io) {
         socket.on("timer start sign", (owner, message) => {
             console.log("okay!!!");
             console.log(message);
-            io.emit("timer start", "timer start 명령 받음");
+            io.to(owner).emit("timer start", "timer start 명령 받음");
             console.log("okay!!");
         });
 
