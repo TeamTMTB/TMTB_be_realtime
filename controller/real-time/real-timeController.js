@@ -31,7 +31,7 @@ let openRealTime = function (io) {
             socket.join(owner);
             alarmCount = {...alarmCount, [userId]:0};
             console.log(socket.id + "가 " + owner + " 방에 입장!");
-            socket.to(owner).emit("enter event", socket.id);
+            io.to(owner).emit("enter event", socket.id);
             console.log("현재 알람 횟수 체크");
             console.log(alarmCount);
 
@@ -48,11 +48,14 @@ let openRealTime = function (io) {
         /*
             타이머 시작 
         */
-        socket.on("timer start sign", (owner) => {
-            console.log("start sign 받음 !!");
-            
-            socket.to(owner).emit("timer start");
-        })
+        socket.emit("your id", socket.id); //클라이언트에 보낼 데이터
+        
+        socket.on("timer start sign", (owner, message) => {
+            console.log("okay!!!");
+            console.log(message);
+            socket.to(owner).emit("timer start", "timer start 명령 받음");
+            console.log("okay!!!");
+        });
 
         /*
             todo 완료 이벤트를 방 멤버들에게 보내기
