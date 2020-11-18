@@ -35,7 +35,7 @@ let openRealTime = function (io) {
         socket.on("enter room", ({owner, userId}) => {
             socket.join(owner);
             //alarmCount = {...alarmCount, [userId]:0};
-            console.log(socket.id + "가 " + owner + " 방에 입장!");
+            console.log(userId + "가 " + owner + " 방에 입장!");
             io.to(owner).emit("enter event", socket.id);
             console.log("현재 알람 횟수 체크");
             console.log(alarmCount);
@@ -59,6 +59,7 @@ let openRealTime = function (io) {
             console.log("okay!!!");
             console.log(message);
             io.to(owner).emit("timer start", "timer start 명령 받음");
+            socket.emit("start", false);
             console.log("okay!!");
         });
 
