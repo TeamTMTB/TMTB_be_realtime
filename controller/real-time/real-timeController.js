@@ -1,8 +1,8 @@
 
 let userCount = {};
-let alarmCount = {...userCount};
+let alarmCount = {};
 
-let count =0;
+let count =1;
 //owner = 방장
 //userId = 개인 id (socket id)
 
@@ -48,6 +48,7 @@ let openRealTime = function (io) {
        socket.on("leave room", ({owner}) => {
             socket.leave(owner);
             console.log(socket.id + "가 " + owner + "방에서 나감!");
+            console.log(alarmCount);
             socket.to(owner).emit("leave event", socket.id);
        })
         /*
@@ -59,7 +60,7 @@ let openRealTime = function (io) {
             console.log("okay!!!");
             console.log(message);
             io.to(owner).emit("timer start", "timer start 명령 받음");
-            socket.emit("start", false);
+            io.to(owner).emit("start", true);
             console.log("okay!!");
         });
 
@@ -73,10 +74,12 @@ let openRealTime = function (io) {
         /*
             알람 끄는 이벤트
         */
-        socket.on("alarm off", (userId, count) => {
+        socket.on("alarm off", (owner, userId, count) => {
             console.log("alarm off");
             alarmCount = {...alarmCount, [userId]:count};
+            io.to(owner).emit("show user name", userId, count);
             console.log(alarmCount);
+
         })
 
         /*
