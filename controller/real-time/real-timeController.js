@@ -7,7 +7,6 @@ let count =1;
 //userId = 개인 id (socket id)
 
 let openRealTime = function (io) {
-
     /*
         
     */
