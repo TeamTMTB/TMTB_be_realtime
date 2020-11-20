@@ -7,7 +7,6 @@ let count =1;
 //userId = 개인 id (socket id)
 
 let openRealTime = function (io) {
-
     /*
         
     */
@@ -36,10 +35,18 @@ let openRealTime = function (io) {
             socket.join(owner);
             //alarmCount = {...alarmCount, [userId]:0};
             console.log(userId + "가 " + owner + " 방에 입장!");
-            io.to(owner).emit("enter event", socket.id);
+            io.to(owner).emit("enter event", owner, userId);
+            //방 멤버 이름 보내주기
+            //io.to(owner).emit("방 멤버", userId);
             console.log("현재 알람 횟수 체크");
             console.log(alarmCount);
+        })
 
+        socket.on("send user", (owner, userName)=>{
+            //방 멤버 이름 보내주기
+            console.log(userName + "---- " + owner + "----");
+            io.to(owner).emit("방 멤버", userName);
+            //io.to(owner).emit("방 멤버", {userName});
         })
 
         /*
@@ -77,6 +84,7 @@ let openRealTime = function (io) {
         socket.on("alarm off", (owner, userId, count) => {
             console.log("alarm off");
             alarmCount = {...alarmCount, [userId]:count};
+            //멤버별 알람 끈 갯수 세기
             io.to(owner).emit("show user name", userId, count);
             console.log(alarmCount);
 
