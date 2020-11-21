@@ -91,6 +91,14 @@ let openRealTime = function (io) {
         })
 
         /*
+            Todo 유저별 체크
+        */
+       socket.on("todo checked", ({todoDesc, userName, owner})=>{
+        console.log(todoDesc+ " "+owner+" "+userName);
+        io.to(owner).emit("show todo checked", todoDesc, userName);
+    });
+
+        /*
             스터디 킹 유저 뿌려주기
         */
        socket.emit("study king", (userId) => {
