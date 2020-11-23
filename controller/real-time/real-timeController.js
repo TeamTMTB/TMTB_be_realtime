@@ -1,5 +1,6 @@
 
 let userCount = {};
+let userList = {};
 let alarmCount = {};
 
 let count =1;
@@ -36,12 +37,14 @@ let openRealTime = function (io) {
             //alarmCount = {...alarmCount, [userId]:0};
             console.log(userId + "가 " + owner + " 방에 입장!");
             io.to(owner).emit("enter event", owner, userId);
+            io.to(owner).emit("room member entered", owner, userId);
             //방 멤버 이름 보내주기
             //io.to(owner).emit("방 멤버", userId);
-            console.log("현재 알람 횟수 체크");
-            console.log(alarmCount);
         })
 
+        /*
+            방 멤버 이름 보내주기
+        */
         socket.on("send user", (owner, userName)=>{
             //방 멤버 이름 보내주기
             console.log(userName + "---- " + owner + "----");
@@ -58,6 +61,16 @@ let openRealTime = function (io) {
             console.log(alarmCount);
             socket.to(owner).emit("leave event", socket.id);
        })
+
+       /*
+            텀이 끝났을때 방 삭제
+        */
+       socket.on("term is over", (owner, userName, term, maxTerm)=> {
+            console.log(owner + " " + userName + " "+ term+" "+maxTerm);
+            socket.emit("remove room", owner);
+            socket.emit("room over, show study king", owner);
+        })
+
         /*
             타이머 시작 
         */
@@ -81,7 +94,7 @@ let openRealTime = function (io) {
         /*
             알람 끄는 이벤트
         */
-        socket.on("alarm off", (owner, userId, count) => {
+        socket.on("alarm off", (owner, userId, count, term) => {
             console.log("alarm off");
             alarmCount = {...alarmCount, [userId]:count};
             //멤버별 알람 끈 갯수 세기
