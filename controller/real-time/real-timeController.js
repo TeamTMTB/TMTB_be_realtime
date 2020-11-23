@@ -68,7 +68,7 @@ let openRealTime = function (io) {
        socket.on("term is over", (owner, userName, term, maxTerm)=> {
             console.log(owner + " " + userName + " "+ term+" "+maxTerm);
             socket.emit("remove room", owner);
-            socket.emit("room over, show study king", owner);
+            socket.emit("room over, show study king", owner, maxTerm);
         })
 
         /*
@@ -99,6 +99,7 @@ let openRealTime = function (io) {
             alarmCount = {...alarmCount, [userId]:count};
             //멤버별 알람 끈 갯수 세기
             io.to(owner).emit("show user name", userId, count);
+
             console.log(alarmCount);
 
         })
@@ -114,9 +115,11 @@ let openRealTime = function (io) {
         /*
             스터디 킹 유저 뿌려주기
         */
-       socket.emit("study king", (userId) => {
-        console.log(userId);
-    })
+       socket.on("show study king", (owner, name, term, maxTerm) => {
+            io.to(owner).emit("who is study king", name);
+            console.log("show study king"+owner+ " "+name+ " "+term+ " "+maxTerm);
+
+       })
 
 
     })
