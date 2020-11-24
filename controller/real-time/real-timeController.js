@@ -36,6 +36,8 @@ let openRealTime = function (io) {
             socket.join(owner);
             //alarmCount = {...alarmCount, [userId]:0};
             console.log(userId + "가 " + owner + " 방에 입장!");
+            console.log("=== 현재 방 정보 ===");
+            console.log(io.of('/').adapter.rooms);
             io.to(owner).emit("enter event", owner, userId);
             io.to(owner).emit("room member entered", owner, userId);
             //방 멤버 이름 보내주기
@@ -59,6 +61,7 @@ let openRealTime = function (io) {
             socket.leave(owner);
             console.log(socket.id + "가 " + owner + "방에서 나감!");
             console.log(alarmCount);
+            console.log(io.of('/').adapter.rooms);
             socket.to(owner).emit("leave event", socket.id);
        })
 
@@ -123,6 +126,7 @@ let openRealTime = function (io) {
 
 
     })
+    io.emit("ekejfke");
 }
 
 
