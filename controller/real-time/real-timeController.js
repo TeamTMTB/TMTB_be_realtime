@@ -75,6 +75,14 @@ let openRealTime = function (io) {
         })
 
         /*
+            방별 텀 보여주기
+        */
+       socket.on("current term", (owner, term)=> {
+           console.log("term: "+term);
+        socket.emit("show the current term", owner, term);
+    })
+
+        /*
             타이머 시작 
         */
         socket.emit("your id", socket.id); //클라이언트에 보낼 데이터
