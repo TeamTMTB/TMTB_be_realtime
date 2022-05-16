@@ -2,7 +2,8 @@
 📖StudyOn MSA프로젝트 실시간, 방 API 서버 구현
 
 ![](https://velog.velcdn.com/images/seeker1207/post/b1d1c105-1cc4-418a-b728-4e85639c3007/image.PNG)
-### 프로젝트 개요
+
+## :heavy_check_mark: 프로젝트 개요
 많은 사람들이 집이 아닌 공공시설에서 공부를 하는 주된 이유는 집에 있는 많은 방해요소를 피할 수 있을 뿐 아니라 자신이 공부하는 모습을 타인에게 노출시키는 것이 자극제로 활용될수 있고 이러한 사람들이 모여 자연스레 공부 분위기를 형성하기 때문입니다. 
 
 또한 카페의 경우 적당한 소음과 밝은 분위기로 공부하기 좋은 환경이 조성되어 있어 적지않은 사람들에게 선호되고 있습니다.
@@ -13,7 +14,8 @@ StudyON은 집에서 공부를 하더라도 온라인에 접속하여 하루에 
 
 StudyON을 통해 많은 사람들이 공간적 제약을 받지 않는 온라인 상에서 서로가 서로의 자극제가 되어 공부하며 자신에게 맞는 공부 습관을 만들어 세운 목표를 성공적으로 달성할 수 있을 것 입니다.
 
-### 프로젝트 전략
+
+## :heavy_check_mark: 프로젝트 전략
 
 본 서비스는 2가지의 핵심 전략 기술을 가지고 있습니다. 
 자신의 공부 시간 및 쉬는 시간을 스스로에 맞게 설정 할 수 있는 타이머 기능과 공부 패턴과 맞는 사람들을 스터디 방에 묶어주는 그룹 기능입니다.
@@ -30,7 +32,8 @@ StudyON에서는 이를 개선하여 자신만의 공부 시간과 쉬는 시간
 
 이와 같이 자신의 공부 패턴과 유사한 사람들을 찾아 같은 공부 및 쉬는 시간을 공유하고 서로가 서로에게 자연스레 동기부여를 할 수 있습니다.
 
-### 도메인 모델링 및 주요기능
+
+## :heavy_check_mark: 도메인 모델링 및 주요기능
 ![](https://velog.velcdn.com/images/seeker1207/post/78f7cb64-03d1-49d8-a4e8-c813e48d1151/image.png)
 -  타이머 기능
 뽀모도로 공부 방법을 활용한 studyON만의 공부 방법을 적용한 타이머입니다. 공부 시간과 쉬는 시간의 알람이 각각 존재하여 설정된 시간에 맞춰 타이머가 작동됩니다. 접속한 방의 모든 유저에게 동일한 타이머가 실행됩니다. 
@@ -44,7 +47,8 @@ StudyON에서는 이를 개선하여 자신만의 공부 시간과 쉬는 시간
 -  Point 기능
  포인트를 이용하여 해당 서비스를 이용하게 됩니다. 회원가입 시 1000포인트 지급되고 스터디 방을 만들거나 입장했을 때 차감되며 알람을 제때 끈 ‘오늘의 공부왕’ 타이틀을 가지게 되면 차감되었던 포인트를 환급받을 수 있습니다. 
 
-### 아키텍처 설계
+
+## :heavy_check_mark: 아키텍처 설계
 ![](https://velog.velcdn.com/images/seeker1207/post/ff10af79-9d36-47b3-b0fe-515c8c49a859/image.png)
 
 아키텍처는 기본적으로 docker와 eks를 통한 컨테이너 기반의 아키텍처 입니다.
@@ -53,17 +57,22 @@ MSA구조 아래서 도메인별로 나누어진 서비스 별로 각각의 서�
 RealTime Service의 경우 실시간 채팅을 관리하는 서버인데, 각각 pod로 나누어진 서버들이 공통적으로 사용자의 세션정보를 가지고 있어야하므로 redis를 통해 그 정보를 공유할수 있게 하였습니다.
 또 redis의 경우에도 클러스터링을 통해 요청을 분산시키고 가용성을 높였습니다.
 
-### 클래스 설계
+
+## :heavy_check_mark: 클래스 설계
 ![](https://velog.velcdn.com/images/seeker1207/post/97d4b6ec-dfe4-44c4-b024-7e44abee5493/image.png)
 
-### 데이터베이스 설계
+
+## :heavy_check_mark: 데이터베이스 설계
 ![](https://velog.velcdn.com/images/seeker1207/post/af73fa0c-23b0-4ff7-8c54-5fcff383e691/image.png)
 
-### real-time 서비스에 대한 시퀸스 설계도
+
+## :heavy_check_mark: real-time 서비스에 대한 시퀸스 설계도
 ![](https://velog.velcdn.com/images/seeker1207/post/feaa6804-5535-45cb-99cd-19cdb63c7996/image.png)
 방안에서 사용자들의 세션을 관리하고 알람 이벤트를 관리하는 순서도를 나타내는 시퀸스 설계도 입니다.
 
-### 결과 화면
+
+## :heavy_check_mark: 결과 화면
+
 1. 메인 페이지
 ![](https://velog.velcdn.com/images/seeker1207/post/be87033e-a360-4f26-9659-ed9810105481/image.png)
 ![](https://velog.velcdn.com/images/seeker1207/post/5ce5cb1f-b381-4382-8ed8-3f21627b37df/image.png)
@@ -103,7 +112,9 @@ RealTime Service의 경우 실시간 채팅을 관리하는 서버인데, 각각
 
 6. 사용가이드
 ![](https://velog.velcdn.com/images/seeker1207/post/5a1aedfc-e67d-4eb1-84ae-3c155f3fdad4/image.png)
-### 기대효과 및 개선사항
+
+
+## :heavy_check_mark: 기대효과 및 개선사항
 1. 개선 사항
  - 노트북을 사용하지 않고 공부하는 사람들도 많기에 app버전의 출시가 필요합니다. 
  화면 크기에 제약이 있기 때문에 잠금상태에서 타이머의 남은 시간과 남은 주기 정도 보여주고 App에 접속했을 때, 사람들이 어떤 실적을 달성하고 있는지 확인하도록 합니다. 
