@@ -68,49 +68,70 @@ RealTime Service의 경우 실시간 채팅을 관리하는 서버인데, 각각
 
 ## :heavy_check_mark: real-time 서비스에 대한 시퀸스 설계도
 ![](https://velog.velcdn.com/images/seeker1207/post/feaa6804-5535-45cb-99cd-19cdb63c7996/image.png)
+
 방안에서 사용자들의 세션을 관리하고 알람 이벤트를 관리하는 순서도를 나타내는 시퀸스 설계도 입니다.
 
 
 ## :heavy_check_mark: 결과 화면
 
 1. 메인 페이지
+
 ![](https://velog.velcdn.com/images/seeker1207/post/be87033e-a360-4f26-9659-ed9810105481/image.png)
 ![](https://velog.velcdn.com/images/seeker1207/post/5ce5cb1f-b381-4382-8ed8-3f21627b37df/image.png)
 ![](https://velog.velcdn.com/images/seeker1207/post/9ac71cbf-5e61-4e65-9976-240c624dbae7/image.png)
 
 2. 마이페이지
+
 ![](https://velog.velcdn.com/images/seeker1207/post/5810f566-4f04-4945-8f03-f602019d4dcd/image.png)
+
 마이페이지에 접속하면 자신의 프로필, Todo List, 캘린더를 확인할 수 있습니다.
 
 3. 스터디 방 만들기 페이지
+
 ![](https://velog.velcdn.com/images/seeker1207/post/e1a0f9ee-8e53-4cbf-9fd7-caddb2d09361/image.png)
+
 스터디 방 만들기 페이지에 접속하면 설정들로 이루어진 폼이 있습니다. 공부 시간(study time), 쉬는 시간(break time), term 횟수 등 설정하여 자신이 운영할 스터디 방을 만들게 됩니다. 태그를 설정하여 추후 일반유저들이 스터디 방을 검색할 때 찾을 수 있도록 합니다.
 
 4. 스터디 방 리스트 페이지
+
 ![](https://velog.velcdn.com/images/seeker1207/post/e89a19ab-ecd5-4275-8317-75a76a68a23b/image.png)
- 스터디 방 리스트 페이지에 접속하면 방장들이 만들어둔 스터디 방이 띄워지게 됩니다. 
+
+스터디 방 리스트 페이지에 접속하면 방장들이 만들어둔 스터디 방이 띄워지게 됩니다. 
 원하는 태그와 방제를 클릭하면 스터디 방에 대한 정보가 나오게 됩니다. 
 설정된 방의 옵션이 자신의 공부 패턴과 유사하다면 접속하여 함께 공부하게 됩니다. 
+
 ![](https://velog.velcdn.com/images/seeker1207/post/57168b12-ffe4-4938-b36f-1b24a13d9b73/image.png)
+
 (원하는 스터디 방을 클릭했을 때 나오는 스터디 방에 대한 정보 확인)
 
 5. 스터디 방 입장 페이지
-![](https://velog.velcdn.com/images/seeker1207/post/4c7a9c6a-033a-475b-94a9-5edd7b1ce917/image.png)
-스터디 방 입장했을 시 보여지는 화면입니다. 크게 Todo List, 타이머, 실적게시판으로 이루어져 있습니다. 
- 첫 번째로 Todo List의 경우, 마이 페이지에 있는 Todo List와 동일합니다. 마이 페이지에서 작성하고 와도 되지만 입장했을 때는 마이 페이지까지 갔다가 들어오지 않아도 스터디 방 입장 페이지에서 추가, 수정, 삭제가 가능합니다. 
 
- 두 번째로 타이머의 경우, 공부 시간과 쉬는 시간의 주기를 표현한 타이머입니다. 설정된 시간에 맞춰 실행되게 되고 start버튼은 방장에게만 권한이 있습니다. 방장이 Start를 누르게 되면 스터디 방 내에 있는 유저들 모두 동일한 타이머를 공유합니다. Study 타이머가 끝나게 되면 쉬는 시간 알람과 함께 알림창을 끄고 이때 break 타이머는 진행됩니다. 이를 설정해둔 주기(term)에 맞춰 반복하게 됩니다.
+![](https://velog.velcdn.com/images/seeker1207/post/4c7a9c6a-033a-475b-94a9-5edd7b1ce917/image.png)
+
+- 스터디 방 입장했을 시 보여지는 화면입니다. 크게 Todo List, 타이머, 실적게시판으로 이루어져 있습니다. 
+첫 번째로 Todo List의 경우, 마이 페이지에 있는 Todo List와 동일합니다. 
+마이 페이지에서 작성하고 와도 되지만 입장했을 때는 마이 페이지까지 갔다가 들어오지 않아도 스터디 방 입장 페이지에서 추가, 수정, 삭제가 가능합니다. 
+
+- 두 번째로 타이머의 경우, 공부 시간과 쉬는 시간의 주기를 표현한 타이머입니다. 
+설정된 시간에 맞춰 실행되게 되고 start버튼은 방장에게만 권한이 있습니다. 
+방장이 Start를 누르게 되면 스터디 방 내에 있는 유저들 모두 동일한 타이머를 공유합니다. 
+Study 타이머가 끝나게 되면 쉬는 시간 알람과 함께 알림창을 끄고 이때 break 타이머는 진행됩니다. 이를 설정해둔 주기(term)에 맞춰 반복하게 됩니다.
 
 ![](https://velog.velcdn.com/images/seeker1207/post/4fea3345-5886-4a29-93b7-dac4311b9cfd/image.png)
+
 세 번째로 실적게시판은 아래의 4가지의 형태를 조회할 수 있습니다. 해당 게시판에 올라오는 문구들은 같은 스터디 방 내에 있는 유저들끼리 서로 공유됩니다. 
+
 1)	접속한 유저 문구 ‘ㅇㅇㅇ님이 들어왔습니다.
 2)	알람을 끈 유저들의 문구 ‘ㅇㅇㅇ님이 ㅇ번째 알람을 눌렀습니다.
 3)	todo를 체크한 유저와 체크 목록 문구 ‘ㅇㅇㅇ님이 ㅇㅇㅇㅇ를 완료했습니다.’ 
 4)	현재 공부 주기 문구 ‘쉬는 시간이 끝나면 ㅇ번째 공부 시간이 시작됩니다.’ 
+
 ![](https://velog.velcdn.com/images/seeker1207/post/bc1ef510-d000-452b-a17f-cec2856a9030/image.png)
+
 그 외에 주기(횟수)가 끝난 후 알람을 제때 끈 사용자들을 ‘오늘의 공부왕’이라는 타이틀과 함께 마지막 성취도 평가전 뿌려줍니다. 또한 현재 스터디 방의 패턴에 대해 만족하는 사용자들을 위해 ‘연장할래요’ 버튼을 클릭한다면 동일한 패턴의 스터디 방을 유지시킬 수 있습니다.
 
 6. 사용가이드
+
 ![](https://velog.velcdn.com/images/seeker1207/post/5a1aedfc-e67d-4eb1-84ae-3c155f3fdad4/image.png)
 
 
